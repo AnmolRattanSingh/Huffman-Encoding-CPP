@@ -6,10 +6,9 @@
 int main(void) {
   std::map<int, int> map = map_frequency("Hello");
 
-  return 0;
-  //   MinHeap heap;
-  //   heap.pop();
-  //   std::cout << "Hello, world!" << std::endl;
+  MinHeap heap;
+  heap.heap.push_back(1);
+  // heap.pop();
   //   std::cout << "Heap size: " << heap.size << std::endl;
-  //   return 0;
+  return 0;
 }

@@ -3,7 +3,8 @@
 // Constructor
 MinHeap::MinHeap() {
   size = 0;
-  heap.push_back(0);
+  Node empty = Node();
+  heap.push_back(&empty);
 }
 
 // Destructor

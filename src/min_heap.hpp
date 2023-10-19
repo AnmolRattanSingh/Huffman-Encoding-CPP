@@ -12,7 +12,7 @@
  * @param
  */
 struct Node {
-  std::byte symbol;
+  int symbol;
   int freq;
   Node *left;
   Node *right;
@@ -27,7 +27,7 @@ class MinHeap {
 public:
   int size;
 
-  // Constructor
+  // Constructor - Initialize size to 0, add empty node to heap
   MinHeap();
 
   // Destructor
@@ -45,6 +45,6 @@ public:
   // Return the node at the top of the heap (also the minimum)
   Node *top();
 
-private:
-  std::vector<int> heap;
+  // private:
+  std::vector<Node *> heap;
 };
