@@ -11,7 +11,11 @@ MinHeap::MinHeap() {
 MinHeap::~MinHeap() { heap.clear(); }
 
 // Swap nodes at specified indices in the heap
-void MinHeap::swap(int index1, int index2) {}
+void MinHeap::swap(int index1, int index2) {
+
+  heap.at(index1) = index2;
+  heap.at(index2) = index1;
+}
 
 // Add a new node to the heap and update size
 void MinHeap::insert(int value) {}
