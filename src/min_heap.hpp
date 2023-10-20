@@ -36,6 +36,9 @@ public:
   // Getter
   Node *get(int index);
 
+  // Repr
+  void print();
+
   // Swap nodes at specified indices in the heap
   void swap(int index1, int index2);
 
