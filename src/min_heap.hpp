@@ -33,11 +33,14 @@ public:
   // Destructor
   ~MinHeap();
 
+  // Getter
+  Node *get(int index);
+
   // Swap nodes at specified indices in the heap
   void swap(int index1, int index2);
 
   // Add a new node to the heap and update size
-  void insert(int value);
+  void insert(Node *node);
 
   // Remove the node at the top of the heap and update size
   Node *pop();
@@ -45,6 +48,6 @@ public:
   // Return the node at the top of the heap (also the minimum)
   Node *top();
 
-  // private:
+private:
   std::vector<Node *> heap;
 };
