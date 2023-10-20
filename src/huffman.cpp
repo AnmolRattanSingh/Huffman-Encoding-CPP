@@ -8,18 +8,26 @@ int main(void) {
   std::map<int, int> map = map_frequency("Hello");
 
   MinHeap heap;
-  Node n1 = Node();
-  n1.freq = 2;
-  n1.symbol = 25;
-  heap.insert(&n1);
-
-  Node n2 = Node();
-  n2.freq = 1;
-  n2.symbol = 20;
-  heap.insert(&n2);
-
-  for (int i = 0; i < heap.size; i++) {
-    std::cout << "Node " << (*heap.get(i)).symbol << std::endl;
-  }
+  Node node = {
+      .symbol = 13,
+      .freq = 0,
+      .left = nullptr,
+      .right = nullptr,
+  };
+  Node node2 = {
+      .symbol = 14,
+      .freq = 1,
+      .left = nullptr,
+      .right = nullptr,
+  };
+  heap.insert(&node);
+  heap.insert(&node2);
+  std::cout << "before: "
+            << "idx0: " << heap.get(0)->symbol
+            << " idx1: " << heap.get(1)->symbol << std::endl;
+  heap.swap(0, 1);
+  std::cout << "after: "
+            << "idx0: " << heap.get(0)->symbol
+            << " idx1: " << heap.get(1)->symbol << std::endl;
   return 0;
 }
