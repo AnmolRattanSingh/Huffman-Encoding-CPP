@@ -4,7 +4,7 @@
 MinHeap::MinHeap() {
   size = 0;
   Node empty = Node();
-  heap.push_back(&empty);
+  heap = std::vector<Node *>();
 }
 
 // Destructor
@@ -12,9 +12,9 @@ MinHeap::~MinHeap() { heap.clear(); }
 
 // Swap nodes at specified indices in the heap
 void MinHeap::swap(int index1, int index2) {
-
-  heap.at(index1) = index2;
-  heap.at(index2) = index1;
+  Node *temp = heap.at(index1);
+  heap.at(index1) = heap.at(index2);
+  heap.at(index2) = temp;
 }
 
 // Add a new node to the heap and update size
