@@ -33,6 +33,9 @@ public:
   // Destructor
   ~MinHeap();
 
+  // Print tree
+  void print();
+
   // Getter
   Node *get(int index);
 
@@ -50,4 +53,5 @@ public:
 
 private:
   std::vector<Node *> heap;
+  void printHelper(int i, std::string prefix);
 };

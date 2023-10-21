@@ -1,4 +1,6 @@
 #include "min_heap.hpp"
+#include <iostream>
+#include <string>
 
 // Constructor
 MinHeap::MinHeap() {
@@ -9,6 +11,26 @@ MinHeap::MinHeap() {
 
 // Destructor
 MinHeap::~MinHeap() { heap.clear(); }
+
+// Print tree
+void MinHeap::print() {
+  std::cout << " /" << std::endl;
+  printHelper(0, " |  ");
+  std::cout << " //" << std::endl;
+}
+
+void MinHeap::printHelper(int i, std::string prefix) {
+  if (i < heap.size()) {
+    // right child = 2i + 2
+    printHelper(2 * i + 2, prefix + "│   ");
+    std::cout << prefix << (char)heap.at(i)->symbol << ":" << heap.at(i)->freq
+              << std::endl;
+    // left child = 2i + 1
+    printHelper(2 * i + 1, prefix + "│   ");
+  } else {
+    std::cout << prefix << "─" << std::endl;
+  }
+}
 
 // Getter
 Node *MinHeap::get(int index) { return heap.at(index); }
