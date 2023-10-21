@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 
+#include <iostream>
+
 // Constructor
 MinHeap::MinHeap() {
   size = 0;
@@ -35,6 +37,14 @@ void MinHeap::printHelper(int i, std::string prefix) {
 // Getter
 Node *MinHeap::get(int index) { return heap.at(index); }
 
+// Repr
+void MinHeap::print() {
+  for (int i = 0; i < size; i++) {
+    std::cout << "Symbol: " << heap.at(i)->symbol
+              << " Freq: " << heap.at(i)->freq << std::endl;
+  };
+}
+
 // Swap nodes at specified indices in the heap
 void MinHeap::swap(int index1, int index2) {
   Node *temp = heap.at(index1);
@@ -50,8 +60,7 @@ void MinHeap::insert(Node *node) {
   int i = size - 1;
   while (i > 1) {
     int parent = (i - 1) / 2;
-
-    if ((*heap.at(parent)).freq > (*heap.at(i)).freq) {
+    if ((heap.at(parent))->freq > (heap.at(i))->freq) {
       swap(parent, i);
     }
     i = parent;
