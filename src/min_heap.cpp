@@ -37,7 +37,7 @@ void MinHeap::printHelper(int i, std::string prefix) {
 // Getter
 Node *MinHeap::get(int index) { return heap.at(index); }
 
-// Repr
+// Print heap
 void MinHeap::print() {
   for (int i = 0; i < size; i++) {
     std::cout << "Symbol: " << heap.at(i)->symbol
