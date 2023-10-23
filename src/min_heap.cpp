@@ -15,20 +15,37 @@ MinHeap::MinHeap() {
 MinHeap::~MinHeap() { heap.clear(); }
 
 // Print tree
-void MinHeap::print() {
+void MinHeap::printHeap() {
   std::cout << " /" << std::endl;
-  printHelper(0, " |  ");
+  printHeapHelper(0, " |  ");
   std::cout << " //" << std::endl;
 }
 
-void MinHeap::printHelper(int i, std::string prefix) {
+void MinHeap::printHeapHelper(int i, std::string prefix) {
   if (i < heap.size()) {
     // right child = 2i + 2
-    printHelper(2 * i + 2, prefix + "│   ");
+    printHeapHelper(2 * i + 2, prefix + "│   ");
     std::cout << prefix << (char)heap.at(i)->symbol << ":" << heap.at(i)->freq
               << std::endl;
     // left child = 2i + 1
-    printHelper(2 * i + 1, prefix + "│   ");
+    printHeapHelper(2 * i + 1, prefix + "│   ");
+  } else {
+    std::cout << prefix << "─" << std::endl;
+  }
+}
+
+// Print tree
+void MinHeap::printHuffman() {
+  std::cout << " /" << std::endl;
+  printHuffmanHelper(heap.at(0), " |  ");
+  std::cout << " //" << std::endl;
+}
+
+void MinHeap::printHuffmanHelper(Node *node, std::string prefix) {
+  if (node != nullptr) {
+    printHuffmanHelper(node->left, prefix + "│   ");
+    std::cout << prefix << (char)node->symbol << ":" << node->freq << std::endl;
+    printHuffmanHelper(node->right, prefix + "│   ");
   } else {
     std::cout << prefix << "─" << std::endl;
   }
@@ -36,14 +53,6 @@ void MinHeap::printHelper(int i, std::string prefix) {
 
 // Getter
 Node *MinHeap::get(int index) { return heap.at(index); }
-
-// Print heap
-void MinHeap::print() {
-  for (int i = 0; i < size; i++) {
-    std::cout << "Symbol: " << heap.at(i)->symbol
-              << " Freq: " << heap.at(i)->freq << std::endl;
-  };
-}
 
 // Swap nodes at specified indices in the heap
 void MinHeap::swap(int index1, int index2) {
@@ -71,4 +80,10 @@ void MinHeap::insert(Node *node) {
 Node *MinHeap::pop() { return nullptr; }
 
 // Return the node at the top of the heap (also the minimum)
-Node *MinHeap::top() { return nullptr; }
+Node *MinHeap::top() {
+  if (size > 0) {
+    return heap.at(0);
+  } else {
+    return nullptr;
+  }
+}

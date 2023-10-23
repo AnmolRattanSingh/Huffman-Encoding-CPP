@@ -17,6 +17,7 @@ int main(void) {
     };
     heap.insert(node);
   }
-  heap.print();
+  heap.printHeap();
+  std::cout << heap.heap.at(0)->left << std::endl;
   return 0;
 }

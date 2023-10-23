@@ -34,13 +34,13 @@ public:
   ~MinHeap();
 
   // Print tree
-  void print();
+  void printHeap();
+
+  // Print tree
+  void printHuffman();
 
   // Getter
   Node *get(int index);
-
-  // Repr
-  void print();
 
   // Swap nodes at specified indices in the heap
   void swap(int index1, int index2);
@@ -54,7 +54,8 @@ public:
   // Return the node at the top of the heap (also the minimum)
   Node *top();
 
-private:
+// private:
   std::vector<Node *> heap;
-  void printHelper(int i, std::string prefix);
+  void printHeapHelper(int i, std::string prefix);
+  void printHuffmanHelper(Node* root, std::string prefix);
 };
