@@ -18,8 +18,10 @@ int main(void) {
     heap.insert(node);
   }
   heap.printHeap();
+  convert_to_tree(&heap);
+  printHuffman(&heap);
 
-  // averageTimes(build_huffman_tree, {10, 100, 1000, 10000, 100000, 1000000},
-  // 26);
+  // averageTimes(build_huffman_tree, {10, 100, 1000, 10000, 100000,
+  // 1000000}, 26);
   return 0;
 }

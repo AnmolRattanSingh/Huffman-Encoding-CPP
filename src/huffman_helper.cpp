@@ -18,10 +18,16 @@ std::map<int, int> map_frequency(std::string input) {
   return map;
 }
 
-// Build huffman tree
-MinHeap *build_huffman_tree(std::map<int, int> map_frequency) {
-  MinHeap *heap = new MinHeap();
-  return heap;
+void convert_to_tree(MinHeap *heap) {
+  while ((*heap).size > 1) {
+    Node *left = (*heap).pop();
+    Node *right = (*heap).pop();
+    Node *temp = new Node{.symbol = '$',
+                          .freq = left->freq + right->freq,
+                          .left = left,
+                          .right = right};
+    (*heap).insert(temp);
+  }
 }
 
 void printHuffman(MinHeap *heap) {
