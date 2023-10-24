@@ -3,6 +3,7 @@
  */
 
 #include "huffman_helper.hpp"
+#include <map>
 
 std::map<int, int> map_frequency(std::string input) {
   std::map<int, int> map;
@@ -12,4 +13,10 @@ std::map<int, int> map_frequency(std::string input) {
   }
 
   return map;
+}
+
+// build huffman tree
+MinHeap *build_huffman_tree(std::map<int, int> map_frequency) {
+  MinHeap *heap = new MinHeap();
+  return heap;
 }

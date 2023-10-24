@@ -1,8 +1,8 @@
 /*
  * Library containing
  */
-
-#include <string>
+#pragma once
+#include <map>
 #include <vector>
 
 /*
