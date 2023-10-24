@@ -44,10 +44,6 @@ public:
 
   ~MinHeap() { heap.clear(); };
 
-  void printSimpleHeap();
-
-  void printHeap();
-
   // Getter
   Node *get(int index);
 
@@ -62,6 +58,10 @@ public:
 
   // Return the node at the top of the heap (also the minimum)
   Node *top();
+
+  void printSimpleHeap();
+
+  void printHeap();
 
 private:
   std::vector<Node *> heap;

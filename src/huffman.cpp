@@ -17,7 +17,7 @@ int main(void) {
     };
     heap.insert(node);
   }
-  heap.printSimpleHeap();
+  heap.printHeap();
 
   // averageTimes(build_huffman_tree, {10, 100, 1000, 10000, 100000, 1000000},
   // 26);
