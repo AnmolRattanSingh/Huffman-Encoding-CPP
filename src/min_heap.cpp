@@ -2,17 +2,13 @@
 
 #include <iostream>
 
-// Constructor
-MinHeap::MinHeap() {
-  size = 0;
-  Node empty = Node();
-  heap = std::vector<Node *>();
+void MinHeap::printSimpleHeap() {
+  for (int i = 0; i < size; i++) {
+    std::cout << (char)heap.at(i)->symbol << " freq: " << heap.at(i)->freq
+              << std::endl;
+  }
 }
 
-// Destructor
-MinHeap::~MinHeap() { heap.clear(); }
-
-// Print tree
 void MinHeap::printHeap() {
   std::cout << " /" << std::endl;
   printHeapHelper(0, " |  ");
@@ -27,23 +23,6 @@ void MinHeap::printHeapHelper(int i, std::string prefix) {
               << std::endl;
     // left child = 2i + 1
     printHeapHelper(2 * i + 1, prefix + "│   ");
-  } else {
-    std::cout << prefix << "─" << std::endl;
-  }
-}
-
-// Print tree
-void MinHeap::printHuffman() {
-  std::cout << " /" << std::endl;
-  printHuffmanHelper(heap.at(0), " |  ");
-  std::cout << " //" << std::endl;
-}
-
-void MinHeap::printHuffmanHelper(Node *node, std::string prefix) {
-  if (node != nullptr) {
-    printHuffmanHelper(node->left, prefix + "│   ");
-    std::cout << prefix << (char)node->symbol << ":" << node->freq << std::endl;
-    printHuffmanHelper(node->right, prefix + "│   ");
   } else {
     std::cout << prefix << "─" << std::endl;
   }

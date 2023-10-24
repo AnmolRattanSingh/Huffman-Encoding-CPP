@@ -2,7 +2,9 @@
  * Library containing
  */
 #pragma once
+
 #include <map>
+#include <string>
 #include <vector>
 
 /*
@@ -34,17 +36,17 @@ class MinHeap {
 public:
   int size;
 
-  // Constructor - Initialize size to 0, add empty node to heap
-  MinHeap();
+  MinHeap() {
+    size = 0;
+    Node empty = Node();
+    heap = std::vector<Node *>();
+  };
 
-  // Destructor
-  ~MinHeap();
+  ~MinHeap() { heap.clear(); };
 
-  // Print tree
+  void printSimpleHeap();
+
   void printHeap();
-
-  // Print tree
-  void printHuffman();
 
   // Getter
   Node *get(int index);
@@ -61,8 +63,7 @@ public:
   // Return the node at the top of the heap (also the minimum)
   Node *top();
 
-  // private:
+private:
   std::vector<Node *> heap;
   void printHeapHelper(int i, std::string prefix);
-  void printHuffmanHelper(Node *root, std::string prefix);
 };
