@@ -1,7 +1,3 @@
-/*
- *
- */
-
 #include "huffman_helper.hpp"
 #include "min_heap.hpp"
 
@@ -22,6 +18,9 @@ void convert_to_tree(MinHeap *heap) {
   while ((*heap).size > 1) {
     Node *left = (*heap).pop();
     Node *right = (*heap).pop();
+
+    // Create new node with left and right as the two new minimum frequencies
+    // and frequency as the sum of the two
     Node *temp = new Node{.symbol = '$',
                           .freq = left->freq + right->freq,
                           .left = left,

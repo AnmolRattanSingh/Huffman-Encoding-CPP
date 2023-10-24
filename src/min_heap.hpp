@@ -31,6 +31,9 @@ struct Node {
  *
  * Constructed void by initializing size of heap to 0 and initializes an empty
  * vector of nodes (heap)
+ *
+ * This includes functions to insert a node into the min heap, remove or return
+ * the first (minimum) value, and swap two nodes.
  */
 class MinHeap {
 public:
@@ -44,23 +47,17 @@ public:
 
   ~MinHeap() { heap.clear(); };
 
-  // Getter
   Node *get(int index);
 
-  // Swap nodes at specified indices in the heap
   void swap(int index1, int index2);
 
-  // Add a new node to the heap and update size
   void insert(Node *node);
 
-  // Remove the node at the top of the heap and update size and return removed
   Node *pop();
 
-  // Return the node at the top of the heap (also the minimum)
   Node *top();
 
   void printSimpleHeap();
-
   void printHeap();
 
 private:
