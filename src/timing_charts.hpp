@@ -1,7 +1,6 @@
+#include "huffman_helper.hpp"
 #include <iostream>
 #include <string>
 
-
-int averageTime(int size, int rng);
-std::vector<int> averageTimes(std::vector<int> sizes, int rng);
-
+double averageTime(MinHeap* (*buildHuffman)(std::map<int, int> map_frequency), int size, int rng);
+std::vector<double> averageTimes(MinHeap* (*buildHuffman)(std::map<int, int> map_frequency), std::vector<int> sizes, int rng);

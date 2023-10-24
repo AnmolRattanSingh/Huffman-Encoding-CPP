@@ -1,8 +1,9 @@
 /*
  * Library containing
  */
-
+#pragma once
 #include <vector>
+#include <map>
 
 /*
  * A struct representing ____
