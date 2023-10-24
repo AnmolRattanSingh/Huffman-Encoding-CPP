@@ -1,5 +1,5 @@
 /*
- *
+ * Helper functions for Huffman Encoding
  */
 
 #include <map>

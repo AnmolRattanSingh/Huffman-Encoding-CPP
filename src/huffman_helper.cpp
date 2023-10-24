@@ -2,8 +2,7 @@
  *
  */
 
-#include <map>
-#include <string>
+#include "huffman_helper.hpp"
 
 std::map<int, int> map_frequency(std::string input) {
   std::map<int, int> map;

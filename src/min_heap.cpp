@@ -1,6 +1,4 @@
 #include "min_heap.hpp"
-#include <iostream>
-#include <string>
 
 #include <iostream>
 
@@ -76,8 +74,13 @@ void MinHeap::insert(Node *node) {
   }
 }
 
-// Remove the node at the top of the heap and update size
-Node *MinHeap::pop() { return nullptr; }
+// Remove the node at the top of the heap and return it and update size
+Node *MinHeap::pop() {
+  Node *first = top();
+  heap.erase(heap.begin());
+  size -= 1;
+  return first;
+}
 
 // Return the node at the top of the heap (also the minimum)
 Node *MinHeap::top() {
