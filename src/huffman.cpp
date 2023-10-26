@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 int main(void) {
   std::vector<int> sizes;
   for (int i = 0; i < 50; i++) {

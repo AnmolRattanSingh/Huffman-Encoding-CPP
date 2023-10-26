@@ -8,8 +8,15 @@ project(HuffmanEncoding
   LANGUAGES CXX
 )
 
+enable_testing()
 # Set the C++ standard to C++17.
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_subdirectory(src)
+
+include(CTest)
+find_library(CRITERION criterion REQUIRED)
+set(CRITERION_FLAGS --verbose -j1)
+add_subdirectory(test)

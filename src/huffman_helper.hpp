@@ -4,6 +4,8 @@
 #include "min_heap.hpp"
 #include <string>
 
+using namespace std;
+
 /**
  * Return a map from character (acsii) to frequency in the inputted string.
  *
@@ -12,7 +14,7 @@
  * @return: A map mapping an integer representation of each character in the
  * input string to the total occurrences of it in the string.
  */
-std::map<int, int> map_frequency(std::string input);
+map<int, int> map_frequency(string input);
 
 /**
  * Convert a min heap to a binary tree where each root node's frequency
@@ -45,6 +47,7 @@ void printHuffman(MinHeap *heap);
  * @param prefix: A string representing the prefix to be printed before the
  * each node
  */
+<<<<<<< HEAD
 void printHuffmanHelper(Node *root, std::string prefix);
 
 /**
@@ -58,3 +61,6 @@ void printHuffmanHelper(Node *root, std::string prefix);
 * each node
 */
 void printCodes(Node* root, std::string str);
+=======
+void printHuffmanHelper(Node *root, string prefix);
+>>>>>>> 5249dcdd755fd47e2117d41131248f26f264ddbc
