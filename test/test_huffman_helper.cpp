@@ -38,12 +38,14 @@ Test(test_huffman_helper, LengthMapFrequency) {
 }
 
 Test(test_huffman_helper, MapFrequency) {
+  // Ensure frequency mapping is correct
   for (int i = 0; i < 4; i++) {
     cr_assert(map_frequency(strings[i]) == map_answers[i]);
   }
 }
 
 Test(test_huffman_helper, ConvertTreeFrequency) {
+  // Ensure convert to tree doesn't exclude any nodes
   for (int i = 0; i < 4; i++) {
     std::map<int, int> this_map = map_frequency(strings[i]);
     MinHeap this_heap;
