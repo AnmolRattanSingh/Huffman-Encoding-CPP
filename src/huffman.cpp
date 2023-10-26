@@ -4,8 +4,10 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 int main(void) {
-  std::map<int, int> map = map_frequency("aaaaabbbbcccdde");
+  map<int, int> map = map_frequency("aaaaabbbbaacccdde");
 
   MinHeap heap;
   for (auto const &pair : map) {
@@ -17,9 +19,9 @@ int main(void) {
     };
     heap.insert(node);
   }
-  heap.printHeap();
+  // heap.printHeap();
   convert_to_tree(&heap);
-  printHuffman(&heap);
+  // printHuffman(&heap);
 
   // averageTimes(build_huffman_tree, {10, 100, 1000, 10000, 100000,
   // 1000000}, 26);
