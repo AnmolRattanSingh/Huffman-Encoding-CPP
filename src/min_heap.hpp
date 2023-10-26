@@ -47,20 +47,77 @@ public:
 
   ~MinHeap() { heap.clear(); };
 
+  /**
+   * Given an index, return a pointer to the node at that index in the min heap
+   *
+   * @param index: An int representing the index of the node in the min heap
+   * that is to be returned
+   * @return: A pointer to the node found at the inputted index in the min heap
+   */
   Node *get(int index);
 
+  /**
+   * Given two indexes, swap the nodes that those indexes in the min heap.
+   *
+   * This is done in place by switching the locations of the pointers to the two
+   * nodes in the min heap
+   *
+   * @param index1: An int representing the first index of the node to be
+   * swapped
+   * @param index2: An int representing the second index of the node to be
+   * swapped
+   */
   void swap(int index1, int index2);
 
+  /**
+   * Given a pointer to a node, insert it in the correct position in the min
+   * heap
+   *
+   * This first appends the node to the end of the heap and then compared the
+   * frequency of the new node to the parent node (at index (i - 1) / 2). This
+   * is because the min heap is stored layer by layer, listing the nodes of the
+   * tree from left to right. If the new node is at a lower frequency than the
+   * parent, then they are swapped.
+   *
+   * @param node: A pointer to the node to be inserted into the min heap
+   */
   void insert(Node *node);
 
+  /**
+   * Remove the first node of the min heap (the node with the lowest frequency)
+   * and returns a pointer to the node just removed. Size is decreased by one.
+   *
+   * @return: A pointer to the node found at the first index of the min heap
+   * (that was just removed from it)
+   */
   Node *pop();
 
+  /**
+   * Return a pointer to the first node of the min heap if it exists, else null.
+   *
+   * @return: A pointer to the node found at the first index of the min heap
+   */
   Node *top();
 
+  /**
+   * Print min heap in a list format
+   */
   void printSimpleHeap();
+
+  /**
+   * Print min heap in a tree format
+   */
   void printHeap();
 
 private:
   std::vector<Node *> heap;
+
+  /**
+   * Helper to print min heap in a tree format
+   *
+   * @param i: An int representing the index of the node to be printed
+   * @param prefix: A string representing the prefix to be printed before the
+   * each node
+   */
   void printHeapHelper(int i, std::string prefix);
 };

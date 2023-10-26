@@ -1,8 +1,8 @@
+#include "timing_charts.hpp"
 #include <chrono>
 #include <iostream>
-#include "timing_charts.hpp"
 
-double averageTime(MinHeap* (*buildHuffman)(std::map<int, int> map_frequency), int size, int rng) {
+double averageTime(void (*convert_to_tree)(MinHeap *heap), int size, int rng) {
   double num_trials = 10.0;
   double total_time = 0;
   for (int i = 0; i < num_trials; i++) {
@@ -15,16 +15,27 @@ double averageTime(MinHeap* (*buildHuffman)(std::map<int, int> map_frequency), i
     // build huffman tree from random string
     std::map<int, int> map = map_frequency(str);
 
+    MinHeap *heap = new MinHeap();
     // start timer
     auto start = std::chrono::high_resolution_clock::now();
-    MinHeap* heap = buildHuffman(map);
+    for (auto const &pair : map) {
+      Node *node = new Node{
+          .symbol = pair.first,
+          .freq = pair.second,
+          .left = nullptr,
+          .right = nullptr,
+      };
+      heap->insert(node);
+    }
+    convert_to_tree(heap);
     // end timer
     auto end = std::chrono::high_resolution_clock::now();
 
     // calculate duration
-    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+    auto duration =
+        std::chrono::duration_cast<std::chrono::microseconds>(end - start);
     // convert to milliseconds
-    auto duration_ms = duration.count() / 1000.0;
+    auto duration_ms = duration.count();
 
     total_time += duration_ms;
 
@@ -33,12 +44,13 @@ double averageTime(MinHeap* (*buildHuffman)(std::map<int, int> map_frequency), i
   return total_time / num_trials;
 }
 
-std::vector<double> averageTimes(MinHeap* (*buildHuffman)(std::map<int, int> map_frequency), std::vector<int> sizes, int rng) {
+std::vector<double> averageTimes(void (*convert_to_tree)(MinHeap *heap),
+                                 std::vector<int> sizes, int rng) {
   std::vector<double> times;
   for (int i = 0; i < sizes.size(); i++) {
-    double t = averageTime(buildHuffman, sizes[i], rng);
+    double t = averageTime(convert_to_tree, sizes[i], rng);
     times.push_back(t);
-    std::cout << "size: " << sizes[i] << " time: " << t << "ms" << std::endl;
+    std::cout << "size: " << sizes[i] << " time: " << t << "µs" << std::endl;
   }
   return times;
 }

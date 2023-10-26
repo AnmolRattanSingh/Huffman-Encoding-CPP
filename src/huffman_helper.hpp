@@ -26,11 +26,35 @@ std::map<int, int> map_frequency(std::string input);
 void convert_to_tree(MinHeap *heap);
 
 /**
- *
+ * Print the Huffman tree in a tree format.
+ * 
+ * Print's each node's symbol and frequency in the tree in a tree format using
+ * the helper function printHuffmanHelper.
+ * 
+ * @param heap: A pointer to a MinHeap to be printed
  */
 void printHuffman(MinHeap *heap);
 
 /**
- *
+ * Helper function to print the Huffman tree in a tree format.
+ * 
+ * Recursively prints the tree by traversing the tree through the left and right
+ * child nodes of each node.
+ * 
+ * @param root: A pointer to the root node of the Huffman tree
+ * @param prefix: A string representing the prefix to be printed before the
+ * each node
  */
 void printHuffmanHelper(Node *root, std::string prefix);
+
+/**
+* Helper function to print the Huffman codes for each character in the tree.
+* 
+* Recursively prints the codes for each character in the tree by traversing the
+* tree through the left and right child nodes of each node.
+* 
+* @param root: A pointer to the root node of the Huffman tree
+* @param str: A string representing the prefix to be printed before the
+* each node
+*/
+void printCodes(Node* root, std::string str);
