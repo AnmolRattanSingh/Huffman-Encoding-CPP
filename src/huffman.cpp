@@ -7,7 +7,7 @@
 using namespace std;
 
 int main(void) {
-  map<int, int> map = map_frequency("aaaaabbbbaacccdde");
+  map<int, int> map = map_frequency("aa");
 
   MinHeap heap;
   for (auto const &pair : map) {
@@ -21,6 +21,8 @@ int main(void) {
   }
   // heap.printHeap();
   convert_to_tree(&heap);
+  std::cout << "Changed " << (heap.size > 0) << std::endl;
+
   // printHuffman(&heap);
 
   // averageTimes(build_huffman_tree, {10, 100, 1000, 10000, 100000,

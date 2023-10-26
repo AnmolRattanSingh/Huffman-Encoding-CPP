@@ -42,3 +42,26 @@ Test(test_huffman_helper, MapFrequency) {
     cr_assert(map_frequency(strings[i]) == map_answers[i]);
   }
 }
+
+Test(test_huffman_helper, ConvertTreeFrequency) {
+  for (int i = 0; i < 4; i++) {
+    std::map<int, int> this_map = map_frequency(strings[i]);
+    MinHeap this_heap;
+    for (auto const &pair : this_map) {
+      Node *node = new Node{
+          .symbol = pair.first,
+          .freq = pair.second,
+          .left = nullptr,
+          .right = nullptr,
+      };
+      this_heap.insert(node);
+    }
+    convert_to_tree(&this_heap);
+
+    int freq = 0;
+    if ((this_heap.size > 0) == 1) {
+      freq = this_heap.get(0)->freq;
+    }
+    cr_assert(freq == strings[i].size());
+  }
+}
