@@ -45,13 +45,38 @@ void printHuffmanHelper(Node *node, std::string prefix) {
   }
 }
 
-void printCodes(Node* root, std::string str) {
+void printCodes(Node *root, std::string str,
+                std::map<Node *, std::string> *node_map) {
   if (root == nullptr) {
     return;
   }
+
   if (root->symbol != '$') {
     std::cout << (char)root->symbol << ": " << str << std::endl;
+    node_map->insert(std::pair<Node *, std::string>(root, str));
   }
-  printCodes(root->left, str + "0");
-  printCodes(root->right, str + "1");
+
+  printCodes(root->left, str + "0", node_map);
+  printCodes(root->right, str + "1", node_map);
+}
+
+void getCompressionRatio(std::string input,
+                         std::map<Node *, std::string> *node_map) {
+  // find total size of input data
+  double input_size = input.length() * 8;
+
+  // find total size of compressed data including the lookup table
+  double compressed_size = 0;
+  // loop through node_map and multiply each node's frequency by the length of
+  // its code
+  for (auto const &pair : *node_map) {
+    compressed_size += pair.first->freq * pair.second.length();
+  }
+  // add 8 bits (ASCII) for each unique character in the map
+  compressed_size += node_map->size() * 8;
+
+  std::cout << "Input size: " << input_size << " bits" << std::endl;
+  std::cout << "Compressed size: " << compressed_size << " bits" << std::endl;
+  std::cout << "Compression ratio: " << (compressed_size / input_size) * 100.0
+            << "%" << std::endl;
 }
