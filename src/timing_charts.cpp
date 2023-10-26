@@ -15,7 +15,7 @@ double averageTime(void (*convert_to_tree)(MinHeap *heap), int size, int rng) {
     // build huffman tree from random string
     std::map<int, int> map = map_frequency(str);
 
-    MinHeap *heap = new MinHeap();
+    MinHeap heap;
     // start timer
     auto start = std::chrono::high_resolution_clock::now();
     for (auto const &pair : map) {
@@ -25,9 +25,9 @@ double averageTime(void (*convert_to_tree)(MinHeap *heap), int size, int rng) {
           .left = nullptr,
           .right = nullptr,
       };
-      heap->insert(node);
+      heap.insert(node);
     }
-    convert_to_tree(heap);
+    convert_to_tree(&heap);
     // end timer
     auto end = std::chrono::high_resolution_clock::now();
 
@@ -38,8 +38,6 @@ double averageTime(void (*convert_to_tree)(MinHeap *heap), int size, int rng) {
     auto duration_ms = duration.count();
 
     total_time += duration_ms;
-
-    delete heap;
   }
   return total_time / num_trials;
 }

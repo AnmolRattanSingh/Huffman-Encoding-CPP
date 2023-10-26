@@ -1,6 +1,9 @@
 /*
  * Helper functions for Huffman Encoding
  */
+
+#pragma once
+
 #include "min_heap.hpp"
 #include <string>
 

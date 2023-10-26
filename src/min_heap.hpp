@@ -39,11 +39,7 @@ class MinHeap {
 public:
   int size;
 
-  MinHeap() {
-    size = 0;
-    Node empty = Node();
-    heap = std::vector<Node *>();
-  };
+  MinHeap();
 
   ~MinHeap() { heap.clear(); };
 

@@ -1,22 +1,27 @@
 #include "min_heap.hpp"
 #include <iostream>
 
-Node *MinHeap::get(int index) { return heap.at(index); }
+MinHeap::MinHeap() {
+  size = 0;
+  heap = std::vector<Node *>();
+}
+
+Node *MinHeap::get(int index) { return this->heap.at(index); }
 
 void MinHeap::swap(int index1, int index2) {
-  Node *temp = heap.at(index1);
-  heap.at(index1) = heap.at(index2);
-  heap.at(index2) = temp;
+  Node *temp = this->heap.at(index1);
+  this->heap.at(index1) = this->heap.at(index2);
+  this->heap.at(index2) = temp;
 }
 
 void MinHeap::insert(Node *node) {
-  heap.push_back(node);
+  this->heap.push_back(node);
   size += 1;
 
   int i = size - 1;
   while (i >= 1) {
     int parent = (i - 1) / 2;
-    if ((heap.at(parent))->freq > (heap.at(i))->freq) {
+    if ((this->heap.at(parent))->freq > (this->heap.at(i))->freq) {
       swap(parent, i);
     }
     i = parent;
@@ -25,14 +30,14 @@ void MinHeap::insert(Node *node) {
 
 Node *MinHeap::pop() {
   Node *first = top();
-  heap.erase(heap.begin());
+  this->heap.erase(this->heap.begin());
   size -= 1;
   return first;
 }
 
 Node *MinHeap::top() {
   if (size > 0) {
-    return heap.at(0);
+    return this->heap.at(0);
   } else {
     return nullptr;
   }
@@ -40,8 +45,8 @@ Node *MinHeap::top() {
 
 void MinHeap::printSimpleHeap() {
   for (int i = 0; i < size; i++) {
-    std::cout << (char)heap.at(i)->symbol << " freq: " << heap.at(i)->freq
-              << std::endl;
+    std::cout << (char)this->heap.at(i)->symbol
+              << " freq: " << this->heap.at(i)->freq << std::endl;
   }
 }
 
@@ -52,11 +57,11 @@ void MinHeap::printHeap() {
 }
 
 void MinHeap::printHeapHelper(int i, std::string prefix) {
-  if (i < heap.size()) {
+  if (i < this->heap.size()) {
     // right child = 2i + 2
     printHeapHelper(2 * i + 2, prefix + "│   ");
-    std::cout << prefix << (char)heap.at(i)->symbol << ":" << heap.at(i)->freq
-              << std::endl;
+    std::cout << prefix << (char)this->heap.at(i)->symbol << ":"
+              << this->heap.at(i)->freq << std::endl;
     // left child = 2i + 1
     printHeapHelper(2 * i + 1, prefix + "│   ");
   } else {

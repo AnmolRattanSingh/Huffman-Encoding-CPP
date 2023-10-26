@@ -17,7 +17,7 @@ double averageTime(void (*convert_to_tree)(MinHeap *heap), int size, int rng);
 /**
  * Calculates the average time taken to build a Huffman tree from random strings
  * of given sizes and range.
- * 
+ *
  * Uses the averageTime function to calculate the average time taken to build a
  * Huffman tree for each size in the sizes vector.
  *
