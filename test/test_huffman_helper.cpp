@@ -3,15 +3,15 @@
  * functions
  */
 
+#include "../src/huffman_helper.hpp"
+#include "../src/min_heap.hpp"
+
 #include <criterion/criterion.h>
 #include <criterion/new/assert.h>
 
 #include <iostream>
 #include <string>
 #include <vector>
-
-#include "../src/huffman_helper.hpp"
-#include "../src/min_heap.hpp"
 
 std::vector<std::string> strings = {"", "aaa", "aba",
                                     "aaabbbbbbbbbbbcccdcccdewleiew"};

@@ -11,3 +11,14 @@ add_test(
    NAME test_huffman_helper
    COMMAND test_huffman_helper ${CRITERION_FLAGS}
 )
+
+add_executable(test_min_heap test_min_heap.cpp)
+target_link_libraries(test_min_heap
+   PRIVATE min_heap
+   PUBLIC ${CRITERION}
+)
+add_test(
+   NAME test_min_heap
+   COMMAND test_min_heap ${CRITERION_FLAGS}
+)
+
