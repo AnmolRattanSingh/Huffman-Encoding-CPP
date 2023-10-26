@@ -11,10 +11,10 @@ int main(void) {
   for (int i = 0; i < 50; i++) {
     sizes.push_back((i + 1) * 1000);
   }
-  averageTimes(convert_to_tree, sizes, 26);
+  // averageTimes(convert_to_tree, sizes, 26);
 
   // test out printCodes
-  std::string test = "hello";
+  std::string test = "aabbbbcccccdddd";
   std::map<int, int> freqs = map_frequency(test);
   MinHeap *heap = new MinHeap();
   for (auto const &pair : freqs) {
@@ -28,6 +28,8 @@ int main(void) {
   }
   convert_to_tree(heap);
   printHuffman(heap);
-  printCodes(heap->get(0), "");
+  std::map<Node *, std::string> node_map;
+  printCodes(heap->get(0), "", &node_map);
+  getCompressionRatio(test, &node_map);
   return 0;
 }
