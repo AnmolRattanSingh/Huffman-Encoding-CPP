@@ -77,5 +77,5 @@ void printCodes(Node *root, std::string str,
  * @param node_map: A map mapping each node in the Huffman tree to its
  * corresponding Huffman code
  */
-void getCompressionRatio(std::string input,
+void getCompressionRatio(int num_unique, std::string input,
                          std::map<Node *, std::string> *node_map);

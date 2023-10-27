@@ -2,18 +2,17 @@
 #include <chrono>
 #include <iostream>
 
-double averageTime(void (*convert_to_tree)(MinHeap *heap), int size, int rng) {
-  double num_trials = 10.0;
+double averageTime(void (*convert_to_tree)(MinHeap *heap), int size) {
+  const double num_trials = 10.0;
   double total_time = 0;
+
   for (int i = 0; i < num_trials; i++) {
-    // generate random string
-    std::string str = "";
+    std::map<int, int> map;
+    int start_freq = size;
     for (int j = 0; j < size; j++) {
-      int r = rand() % rng;
-      str += (char)(r + 97);
+      map[j] = start_freq;
+      start_freq--;
     }
-    // build huffman tree from random string
-    std::map<int, int> map = map_frequency(str);
 
     MinHeap heap;
     // start timer
@@ -33,22 +32,20 @@ double averageTime(void (*convert_to_tree)(MinHeap *heap), int size, int rng) {
 
     // calculate duration
     auto duration =
-        std::chrono::duration_cast<std::chrono::microseconds>(end - start);
-    // convert to milliseconds
-    auto duration_ms = duration.count();
+        std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
 
-    total_time += duration_ms;
+    total_time += duration.count();
   }
   return total_time / num_trials;
 }
 
 std::vector<double> averageTimes(void (*convert_to_tree)(MinHeap *heap),
-                                 std::vector<int> sizes, int rng) {
+                                 std::vector<int> sizes) {
   std::vector<double> times;
   for (int i = 0; i < sizes.size(); i++) {
-    double t = averageTime(convert_to_tree, sizes[i], rng);
+    double t = averageTime(convert_to_tree, sizes[i]);
     times.push_back(t);
-    std::cout << "size: " << sizes[i] << " time: " << t << "µs" << std::endl;
+    std::cout << sizes[i] << "," << t << std::endl;
   }
   return times;
 }

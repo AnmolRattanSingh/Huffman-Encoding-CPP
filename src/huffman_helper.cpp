@@ -60,7 +60,7 @@ void printCodes(Node *root, std::string str,
   printCodes(root->right, str + "1", node_map);
 }
 
-void getCompressionRatio(std::string input,
+void getCompressionRatio(int num_unique, std::string input,
                          std::map<Node *, std::string> *node_map) {
   // find total size of input data
   double input_size = input.length() * 8;
@@ -75,8 +75,5 @@ void getCompressionRatio(std::string input,
   // add 8 bits (ASCII) for each unique character in the map
   compressed_size += node_map->size() * 8;
 
-  std::cout << "Input size: " << input_size << " bits" << std::endl;
-  std::cout << "Compressed size: " << compressed_size << " bits" << std::endl;
-  std::cout << "Compression ratio: " << (compressed_size / input_size) * 100.0
-            << "%" << std::endl;
+  std::cout << num_unique << "," << (compressed_size / input_size) << std::endl;
 }
